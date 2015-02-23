@@ -1,0 +1,108 @@
+buildscript {
+    repositories {
+        maven { url 'http://repo.spring.io/plugins-release' }
+    }
+    dependencies {
+        classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+    }
+}
+
+
+plugins {
+    id 'com.github.hierynomus.license' version '0.11.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'license'
+apply plugin: 'maven'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
+
+group = 'org.springframework.social'
+description = 'Simple Google OAuth API'
+version = '1.0.0.RELEASE'
+
+
+sourceCompatibility=1.6
+targetCompatibility=1.6
+
+ext {
+    springVersion = '4.1.5.RELEASE'
+    springSocialVersion = '1.1.0.RELEASE'
+    servletApiVersion = '2.5'
+    jacksonVersion = '2.5.1'
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile "junit:junit:$junitVersion"
+    testCompile "org.mockito:mockito-all:$mockitoVersion"
+    testCompile "org.springframework:spring-test:$springVersion"
+
+
+    compile "org.springframework.social:spring-social-core:$springSocialVersion"
+    compile "org.springframework.social:spring-social-config:$springSocialVersion"
+    optional "org.springframework.social:spring-social-security:$springSocialVersion"
+    compile "com.fasterxml.jackson.core:jackson-core:$jacksonVersion"
+    compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
+    compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
+    provided "javax.servlet:servlet-api:$servletApiVersion"
+}
+
+license {
+    exclude "**/*.json"
+    skipExistingHeaders = false
+    header rootProject.file('LICENSE_APACHE_HEADER')
+    ext.year = Calendar.getInstance().get(Calendar.YEAR)
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.project {
+                url 'https://github.com/hightea/simple-spring-social-google'
+                name project.name
+                description 'Simple Spring social Google integration'
+                scm {
+                    connection 'scm:git:git@github.com:hightea/simple-spring-social-google.git'
+                    developerConnection 'scm:git:git@github.com:hightea/simple-spring-social-google.git'
+                    url 'git@github.com:hightea/simple-spring-social-google.git'
+                }
+
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                        distribution 'repo'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'hightea'
+                        name 'Hightea'
+                    }
+                }
+            }
+        }
+    }
+}
+
+install.repositories.mavenInstaller.pom = uploadArchives.repositories.mavenDeployer.pom

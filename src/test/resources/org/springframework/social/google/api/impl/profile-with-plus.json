@@ -1,0 +1,11 @@
+{
+  "id": "100001234567898765432",
+  "name": "Jean Mineur",
+  "family_name": "Mineur",
+  "given_name": "Jean",
+  "picture": "http://www.gravatar.com/avatar/00000000000000000000000000000000",
+  "email": "jean.mineur@gmail.com",
+  "locale": "fr",
+  "verified_email": true,
+  "link": "https://plus.google.com/+JeanMineur"
+}
