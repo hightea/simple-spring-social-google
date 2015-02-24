@@ -15,6 +15,9 @@
  */
 package org.springframework.social.google.api;
 
+/**
+ * Model class containing a Google user's profile information.
+ */
 public class GoogleProfile {
 
     private final String id;

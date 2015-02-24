@@ -26,6 +26,10 @@ import org.springframework.util.StringUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Google specific authentication service including default needed scope (userinfo.email and userinfo.profile).
+ * This service allows to automatic add the 'access_offline' parameter.
+ */
 public class GoogleAuthenticationService extends OAuth2AuthenticationService<Google> {
 
     private static final String DEFAULT_SCOPE = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile";

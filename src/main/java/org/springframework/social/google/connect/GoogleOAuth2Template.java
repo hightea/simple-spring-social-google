@@ -24,6 +24,9 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.Map;
 
+/**
+ * Google-specific extension of OAuth2Template.
+ */
 public class GoogleOAuth2Template extends OAuth2Template {
 	
 	public GoogleOAuth2Template(String clientId, String clientSecret) {

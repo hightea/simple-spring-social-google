@@ -15,7 +15,16 @@
  */
 package org.springframework.social.google.api;
 
+/**
+ * Defines operations for reading user data from Google.
+ */
 public interface UserOperations {
 
+    /**
+     * Retrieves the profile for the authenticated user.
+     * The profile information are retrieved from the https://www.googleapis.com/oauth2/v2/userinfo API
+     * @return the user's profile information.
+     * @throws org.springframework.social.MissingAuthorizationException if GoogleTemplate was not created with an access token.
+     */
     GoogleProfile getUserProfile();
 }

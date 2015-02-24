@@ -17,7 +17,10 @@ package org.springframework.social.google.api;
 
 import org.springframework.social.ApiBinding;
 
-
+/**
+ * Interface specifying a basic set of operations for interacting with Google.
+ * Implemented by {@link GoogleTemplate}.
+ */
 public interface Google extends ApiBinding {
 
 	/**

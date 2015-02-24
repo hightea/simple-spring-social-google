@@ -19,6 +19,10 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import org.springframework.social.google.api.GoogleProfile;
 
+/**
+ * Jackson module for setting up mixin annotations on Google model types. This enables the use of Jackson annotations without
+ * directly annotating the model classes themselves.
+ */
 public class GoogleModule extends SimpleModule {
 
     public GoogleModule() {

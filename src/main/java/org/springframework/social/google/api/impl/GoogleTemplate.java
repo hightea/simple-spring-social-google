@@ -23,13 +23,26 @@ import org.springframework.social.google.api.UserOperations;
 import org.springframework.social.google.api.impl.json.GoogleModule;
 import org.springframework.social.oauth2.AbstractOAuth2ApiBinding;
 
-
+/**
+ * <p>This is the central class for interacting with Google.</p>
+ * <p>
+ * If some operations do not require OAuth authentication, you may use
+ * a {@link GoogleTemplate} that is created through the default constructor
+ * and without any OAuth details.
+ * Attempts to perform secured operations through such an instance, however,
+ * will result in {@link org.springframework.social.MissingAuthorizationException} being thrown.
+ * </p>
+ */
 public class GoogleTemplate extends AbstractOAuth2ApiBinding implements Google {
 	
-	private String accessToken;
-
 	private UserOperations userOperations;
 
+    /**
+     * Create a new instance of GoogleTemplate.
+     * This constructor creates a new GoogleTemplate able to perform unauthenticated operations against Google API.
+     * A GoogleTemplate created with this constructor will not support operations requiring authentication.
+     * Those operations requiring authentication will throw {@link org.springframework.social.MissingAuthorizationException}.
+     */
 	public GoogleTemplate() {
 		initialize();
 	}

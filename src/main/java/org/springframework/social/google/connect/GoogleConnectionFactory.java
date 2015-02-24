@@ -20,8 +20,16 @@ import org.springframework.social.connect.support.OAuth2ConnectionFactory;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.oauth2.AccessGrant;
 
+/**
+ * Google ConnectionFactory implementation.
+ */
 public class GoogleConnectionFactory extends OAuth2ConnectionFactory<Google> {
 
+    /**
+     * Creates a GoogleConnectionFactory for the given client ID and secret.
+     * @param clientId The application's client ID as assigned by Google (see the developer console)
+     * @param clientSecret The application's secret as assigned by Google (see the developer console)
+     */
 	public GoogleConnectionFactory(String clientId, String clientSecret) {
 		super("google", new GoogleServiceProvider(clientId, clientSecret), new GoogleAdapter());
 	}

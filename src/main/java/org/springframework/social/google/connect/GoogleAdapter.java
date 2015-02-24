@@ -23,6 +23,9 @@ import org.springframework.social.connect.UserProfileBuilder;
 import org.springframework.social.google.api.Google;
 import org.springframework.social.google.api.GoogleProfile;
 
+/**
+ * Google ApiAdapter implementation.
+ */
 public class GoogleAdapter implements ApiAdapter<Google> {
 
 	public boolean test(Google google) {

@@ -19,8 +19,16 @@ import org.springframework.social.google.api.Google;
 import org.springframework.social.google.api.impl.GoogleTemplate;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
 
+/**
+ * Google ServiceProvider implementation.
+ */
 public class GoogleServiceProvider extends AbstractOAuth2ServiceProvider<Google> {
 
+    /**
+     * Creates a GoogleServiceProvider for the given client ID and secret.
+     * @param clientId The application's client ID as assigned by Google (see the developer console)
+     * @param clientSecret The application's secret as assigned by Google (see the developer console)
+     */
 	public GoogleServiceProvider(String clientId, String clientSecret) {
 		super(new GoogleOAuth2Template(clientId, clientSecret));
 	}
