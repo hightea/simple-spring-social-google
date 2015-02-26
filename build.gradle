@@ -63,6 +63,13 @@ license {
     ext.year = Calendar.getInstance().get(Calendar.YEAR)
 }
 
+jar {
+    metaInf {
+        include 'LICENSE'
+        include 'NOTICE'
+    }
+}
+
 task sourcesJar(type: Jar) {
     classifier = 'sources'
     from sourceSets.main.allSource
